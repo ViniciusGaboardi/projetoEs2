@@ -1,0 +1,25 @@
+describe('Teste de Logout', () => {
+  beforeEach(() => {
+    // Autentica-se antes de testar o logout (supondo que já existe uma página de login)
+    cy.visit('http://localhost:8080'); // Página de login
+    cy.get('input[name="email"]').type('teste@exemplo.com'); // E-mail do usuário de teste
+    cy.get('input[name="senha"]').type('senha123'); // Senha do usuário de teste
+    cy.get('button[type="submit"]').click(); // Envia o formulário de login
+
+    // Verifica se foi redirecionado para a timeline (página protegida após login)
+    cy.url().should('include', '/timeline');
+  });
+
+  it('Deve realizar logout e redirecionar para a página de login', () => {
+    cy.visit('http://localhost:8080/timeline'); // Página de timeline, onde o usuário está logado
+
+    // Clica no botão ou link de logout
+    cy.get('a[href="/sair"]').click(); // Link para logout (ajuste se necessário)
+
+    // Verifica se foi redirecionado para a página de login
+    cy.url().should('include', '/'); // Página inicial ou de login
+
+    // Verifica se a interface de login foi exibida (se a imagem ou os campos estiverem presentes)
+    cy.contains('Clique aqui para fazer login!').should('be.visible'); // Texto ou elemento indicativo de login
+  });
+});

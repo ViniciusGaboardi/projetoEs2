@@ -1,0 +1,25 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src:/opt/src
+    command: php -S 0.0.0.0:8080 -t /opt/src/public
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./src/database/db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"

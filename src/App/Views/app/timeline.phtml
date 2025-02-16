@@ -1,0 +1,235 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+<!-- Bootstrap JavaScript (necessário para dropdowns) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+<style>
+    body {
+        background-color: #36393F; /* Fundo escuro */
+        color: #FFFFFF; /* Texto branco */
+    }
+
+    .navbar {
+        background-color: #2C2F33; /* Fundo da navbar */
+    }
+
+    .menuItem {
+        color: #FFFFFF; /* Texto das opções do menu */
+    }
+
+    .menuItem:hover {
+        color: #7289DA; /* Azul claro ao passar o mouse */
+    }
+
+    .perfil {
+        background: #2C2F33; /* Fundo do perfil */
+        border: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .perfilTopo {
+        background-color: #7289DA; /* Azul claro */
+    }
+
+    .tweetBox {
+        background-color: #2C2F33; /* Fundo escuro */
+        border: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .tweet {
+        background-color: #40444B; /* Fundo escuro para tweets */
+        border-bottom: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .quemSeguir {
+        background: #2C2F33; /* Fundo escuro */
+        border: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .quemSeguirTitulo {
+        color: #FFFFFF; /* Título em branco */
+    }
+
+    .quemSeguirTxt {
+        color: #7289DA; /* Azul claro */
+    }
+
+    .quemSeguirTxt:hover {
+        text-decoration: underline; /* Efeito ao passar o mouse */
+    }
+
+    .form-control {
+        background-color: #40444B; /* Fundo escuro para inputs */
+        color: #FFFFFF; /* Texto branco em inputs */
+        border: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .form-control::placeholder {
+        color: #99AAB5; /* Placeholder cinza claro */
+    }
+
+    .btn-primary {
+        background-color: #7289DA; /* Azul claro */
+        border: none; /* Remove borda */
+    }
+
+    .btn-primary:hover {
+        background-color: #5B6EAA; /* Azul claro escuro ao passar o mouse */
+    }
+
+    .btn-secondary {
+        background-color: #99AAB5; /* Cinza claro */
+        border: none; /* Remove borda */
+    }
+
+    .btn-secondary:hover {
+        background-color: #7A9B9F; /* Cinza claro escuro ao passar o mouse */
+    }
+
+    .pagination .page-link {
+        background-color: #40444B; /* Fundo escuro para paginação */
+        color: #FFFFFF; /* Texto branco */
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #7289DA; /* Azul claro quando ativo */
+        color: #FFFFFF; /* Texto branco */
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-lg menu">
+    <div class="container">
+        <div class="navbar-nav">
+            <a class="menuItem" href="/timeline">Home</a>
+            <a class="menuItem" href="/sair">Sair</a>
+            <img src="/img/twitter_logo.png" class="menuIco" />
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row pt-2">
+
+        <div class="col-md-3">
+            <div class="perfil">
+                <div class="perfilTopo"></div>
+                <div class="perfilPainel">
+                    <div class="row mt-2 mb-2">
+                        <div class="col mb-2">
+                            <span class="perfilPainelNome">
+                                <?= htmlspecialchars($this->view->info_usuario['nome'] ?? 'Usuário Desconhecido') ?>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col">
+                            <span class="perfilPainelItem">Pios</span><br />
+                            <span class="perfilPainelItemValor">
+                                <?= htmlspecialchars($this->view->total_tweets['total_tweet'] ?? 0) ?>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="perfilPainelItem">Seguindo</span><br />
+                            <span class="perfilPainelItemValor">
+                                <?= htmlspecialchars($this->view->total_seguindo['total_seguindo'] ?? 0) ?>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="perfilPainelItem">Seguidores</span><br />
+                            <span class="perfilPainelItemValor">
+                                <?= htmlspecialchars($this->view->total_seguidores['total_seguidores'] ?? 0) ?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row mb-2">
+                <div class="col tweetBox">
+                    <form method="post" action="/tweet">
+                        <textarea class="form-control" name="tweet" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                        <input type="hidden" name="id_ia" id="id_ia" value="<?= htmlspecialchars($this->view->opcoes[0]['id'] ?? '') ?>">
+                        <div class="col mt-2 d-flex justify-content-end align-items-center">
+                            <div class="dropdown me-2">
+                                <?php 
+                                    // Assumindo que sempre haverá pelo menos uma opção
+                                    $opcaoSelecionada = htmlspecialchars($this->view->opcoes[0]['nome'] ?? 'Selecione uma IA'); 
+                                ?>
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <?= $opcaoSelecionada ?>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <?php foreach ($this->view->opcoes as $opcao): ?>
+                                        <li>
+                                            <a class="dropdown-item" href="#" onclick="atualizarSelecao('<?= htmlspecialchars($opcao['nome']) ?>', <?= htmlspecialchars($opcao['id']) ?>)">
+                                                <?= htmlspecialchars($opcao['nome']) ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+
+                            <script>
+                                function atualizarSelecao(nome, id) {
+                                    // Atualiza o texto do botão com a opção selecionada
+                                    document.getElementById('dropdownMenuButton').textContent = nome;
+                                    // Atualiza o valor do campo oculto com a ID da IA selecionada
+                                    document.getElementById('id_ia').value = id;
+                                }
+                            </script>
+
+                            <button type="submit" class="btn btn-primary">Piar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <?php foreach ($this->view->tweets as $tweet): ?>
+                <div class="row tweet">
+                    <div class="col">
+                        <p><strong><?= htmlspecialchars($tweet['nome'] ?? 'Usuário Desconhecido') ?></strong> <small><span class="text text-muted">- <?= htmlspecialchars($tweet['data'] ?? 'Data não disponível') ?></span></small></p>
+                        <p><?= htmlspecialchars($tweet['tweet'] ?? '') ?></p>
+                        <br />
+                        <?php if ($tweet['id_usuario'] == $_SESSION['id']): ?>
+                            <form>
+                                <div class="col d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-danger"><small>Remover</small></button>
+                                </div>
+                            </form>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+            <div class="row mt-5">
+                <nav aria-label="Navegação de página exemplo">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="?pagina=1">Primeira</a></li>
+                        <?php for ($i = 1; $i <= $this->view->total_de_paginas; $i++): ?>
+                            <li class="page-item <?= $this->view->pagina_ativa == $i ? 'active' : '' ?>"><a class="page-link" href="?pagina=<?= $i ?>"><?= $i ?></a></li>
+                        <?php endfor; ?>
+                        <li class="page-item"><a class="page-link" href="?pagina=<?= $this->view->total_de_paginas ?>">Última</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="quemSeguir">
+                <span class="quemSeguirTitulo">Quem seguir</span><br />
+                <hr />
+                <a href="/quem_seguir" class="quemSeguirTxt">Procurar por pessoas conhecidas</a>
+            </div>
+            <div class="quemSeguir">
+                <span class="quemSeguirTitulo">Inteligência Artificial</span><br />
+                <hr />
+                <a href="/criar_ia" class="quemSeguirTxt">Criar Avatar IA</a>
+            </div>
+        </div>
+    </div>
+</div>

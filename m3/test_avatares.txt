@@ -1,0 +1,47 @@
+describe('Teste de Avatares de IA', () => {
+  beforeEach(() => {
+    // Visita a página antes de cada teste
+    cy.visit('http://localhost:3000'); // Substituir pela URL correta
+  });
+
+  it('Deve criar um novo avatar de IA', () => {
+    // Preenche o campo de texto para criar o avatar
+    cy.get('textarea[placeholder="Digite aqui como você quer o seu Avatar"]')
+      .type('Crie um avatar futurista com armadura tecnológica');
+
+    // Submete o formulário
+    cy.get('button[type="submit"]').click();
+
+    // Valida que o avatar foi adicionado à lista
+    cy.contains('.card', 'Avatar de IA 1').should('exist'); // Ajuste o texto conforme necessário
+  });
+
+  it('Deve editar um avatar existente', () => {
+    // Clica no botão de edição do avatar
+    cy.get('.card').contains('Editar').click();
+
+    // Simula a edição do avatar (depende da funcionalidade de edição)
+    cy.get('textarea[placeholder="Digite aqui como você quer o seu Avatar"]')
+      .clear()
+      .type('Avatar atualizado com tema de espaço sideral');
+
+    // Salva as alterações (simular botão salvar, se aplicável)
+    cy.get('button[type="submit"]').click();
+
+    // Valida que as alterações foram aplicadas
+    cy.contains('.card', 'Avatar atualizado com tema de espaço sideral').should('exist');
+  });
+
+  it('Deve excluir um avatar existente', () => {
+    // Clica no botão "Excluir"
+    cy.get('.card').contains('Excluir').click();
+
+    // Valida que o avatar foi removido
+    cy.contains('.card', 'Avatar de IA 1').should('not.exist'); // Ajustar o texto conforme necessário
+  });
+
+  it('Valida se o avatar está ativo depois de reload', () => {
+    cy.reload();
+    cy.contains('.card', 'Avatar de IA 1').should('exist');
+  });
+});

@@ -1,0 +1,206 @@
+<style>
+    body {
+        background-color: #36393F; /* Fundo escuro */
+        color: #FFFFFF; /* Texto branco */
+    }
+
+    .navbar {
+        background-color: #2C2F33; /* Fundo da navbar */
+    }
+
+    .menuItem {
+        color: #FFFFFF; /* Texto das opções do menu */
+    }
+
+    .menuItem:hover {
+        color: #7289DA; /* Azul claro ao passar o mouse */
+    }
+
+    .perfil {
+        background: #2C2F33; /* Fundo do perfil */
+        border: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .perfilTopo {
+        background-color: #7289DA; /* Azul claro */
+    }
+
+    .tweetBox {
+        background-color: #2C2F33; /* Fundo escuro */
+        border: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .tweet {
+        background-color: #40444B; /* Fundo escuro para tweets */
+        border-bottom: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .quemSeguir {
+        background: #2C2F33; /* Fundo escuro */
+        border: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .quemSeguirTitulo {
+        color: #FFFFFF; /* Título em branco */
+    }
+
+    .quemSeguirTxt {
+        color: #7289DA; /* Azul claro */
+    }
+
+    .quemSeguirTxt:hover {
+        text-decoration: underline; /* Efeito ao passar o mouse */
+    }
+
+    .form-control {
+        background-color: #40444B; /* Fundo escuro para inputs */
+        color: #FFFFFF; /* Texto branco em inputs */
+        border: 1px solid #99AAB5; /* Borda cinza claro */
+    }
+
+    .form-control::placeholder {
+        color: #99AAB5; /* Placeholder cinza claro */
+    }
+
+    .btn-primary {
+        background-color: #7289DA; /* Azul claro */
+        border: none; /* Remove borda */
+    }
+
+    .btn-primary:hover {
+        background-color: #5B6EAA; /* Azul claro escuro ao passar o mouse */
+    }
+
+    .btn-secondary {
+        background-color: #99AAB5; /* Cinza claro */
+        border: none; /* Remove borda */
+    }
+
+    .btn-secondary:hover {
+        background-color: #7A9B9F; /* Cinza claro escuro ao passar o mouse */
+    }
+
+    .pagination .page-link {
+        background-color: #40444B; /* Fundo escuro para paginação */
+        color: #FFFFFF; /* Texto branco */
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #7289DA; /* Azul claro quando ativo */
+        color: #FFFFFF; /* Texto branco */
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-lg menu">
+	<div class="container">
+		<div class="navbar-nav">
+			<a class="menuItem" href="/timeline">
+				Home
+			</a>
+
+			<a class="menuItem" href="/sair">
+				Sair
+			</a>
+			<img src="/img/twitter_logo.png" class="menuIco" />
+		</div>
+	</div>
+</nav>
+
+<div class="container mt-5">
+	<div class="row pt-2">
+
+		<div class="col-md-3">
+
+			<div class="perfil">
+				<div class="perfilTopo">
+
+				</div>
+
+				<div class="perfilPainel">
+
+					<div class="row mt-2 mb-2">
+						<div class="col mb-2">
+							<span class="perfilPainelNome">Nome do Usuário</span>
+						</div>
+					</div>
+
+					<div class="row mb-2">
+
+						<div class="col">
+							<span class="perfilPainelItem">Pios</span><br />
+							<span class="perfilPainelItemValor">0</span>
+						</div>
+
+						<div class="col">
+							<span class="perfilPainelItem">Seguindo</span><br />
+							<span class="perfilPainelItemValor">0</span>
+						</div>
+
+						<div class="col">
+							<span class="perfilPainelItem">Seguidores</span><br />
+							<span class="perfilPainelItemValor">0</span>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+			<div class="card mb-3">
+				<div class="card-body">
+					<h5 class="card-title">Criar uma nova IA</h5>
+					<!-- Views/app/form.phtml -->
+                    <form method="post" action="/criar_ia"> <!-- O mesmo que já estava -->
+                        <div class="mb-3">
+                            <label for="nomeIA" class="form-label"  style="color: black;">Nome da IA</label>
+                            <input type="text" name="nomeIA" class="form-control" id="nomeIA" placeholder="Insira o nome da IA" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="personalidadeIA" class="form-label"  style="color: black;">Personalidade da IA</label>
+                            <textarea name="personalidadeIA" class="form-control" id="personalidadeIA" rows="3" placeholder="Descreva a personalidade da IA" required></textarea>
+                        </div>
+                        <input type="hidden" name="id_criador" value="<?= $_SESSION['id'] ?>"> <!-- ID do criador -->
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Criar IA</button>
+                        </div>
+                    </form>
+
+                    <?php if (isset($_GET['success'])): ?>
+                        <div class="alert alert-success" role="alert">
+                            IA criada com sucesso!
+                        </div>
+                    <?php endif; ?>
+
+				</div>
+			</div>
+
+			<h5 class="mt-4" >Suas IAs Criadas</h5>
+			<?php foreach ($this->view->opcoes as $opcao): ?>
+				<div class="row mb-2">
+					<div class="col">
+						<div class="card">
+							<div class="card-body"  style="color: black;">
+								<?= htmlspecialchars($opcao['nome']) ?> <br>
+                                <i style="color:gray;"><?= htmlspecialchars($opcao['personalidade']) ?></i>
+								<!-- Aqui você pode adicionar botões para editar ou excluir a IA, se necessário -->
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+
+		<div class="col-md-3">
+            <div class="quemSeguir">
+                <span class="quemSeguirTitulo">Quem seguir</span><br />
+                <hr />
+                <a href="/quem_seguir" class="quemSeguirTxt">Procurar por pessoas conhecidas</a>
+            </div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,199 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Miniframework</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/style2.css">
+
+	</head>
+
+	<body>
+        
+		<nav class="navbar navbar-expand-lg menu">
+            <div class="container">
+              <div class="navbar-nav">
+                  <a class="menuItem" href="/timeline">
+                      Home
+                  </a>
+        
+                  <a class="menuItem" href="/sair">
+                      Sair
+                  </a>
+                    <img src="img/VOX_logo4.png" class="menuIco" />
+              </div>
+            </div>
+        </nav>
+        
+        <div class="container mt-5">
+            <div class="row pt-2">
+                
+                <div class="col-md-3">
+        
+                    <div class="perfil ">
+                        
+                        
+                        <div class="perfilTopo usuario2 teste1">
+        
+                            <div class="row">
+                                <div class="col text-center mt-3 mb-2">
+                                    <img src="img/usuario.png" class="usuario" alt="Usuário" />
+                                </div>
+                            </div>
+
+                        </div>
+        
+                        
+
+                        <div class="perfilPainel">
+
+                            
+                            
+                            <div class="row mt-2 mb-2">
+                                <div class="col text-center">
+                                    <span class="perfilPainelNome">Usuário 1</span>
+                                </div>
+                            </div>
+                        
+                            <div class="row mb-2 text-center">
+                        
+                                <div class="col">
+                                    <span class="perfilPainelItem">Tweets</span><br />
+                                    <span class="perfilPainelItemValor">516</span>
+                                </div>
+                        
+                                <div class="col">
+                                    <span class="perfilPainelItem">Seguindo</span><br />
+                                    <span class="perfilPainelItemValor">749</span>
+                                </div>
+                        
+                                <div class="col">
+                                    <span class="perfilPainelItem">Seguidores</span><br />
+                                    <span class="perfilPainelItemValor">1.3k</span>
+                                </div>
+                        
+                            </div>
+                        
+                        </div>
+                        
+                    </div>
+        
+                </div>
+        
+                <div class="col-md-6">
+                    <div class="row mb-2">
+                        <div class="col tweetBox">
+                            <form>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                
+                                <div class="col mt-2 d-flex justify-content-end">
+                                    <div>
+                                        <div class="d-flex flex-row">
+                                            <div class="p-2">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      Selecionar Avatar
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                      <a class="dropdown-item" href="#">Personagem 1</a>
+                                                      <a class="dropdown-item" href="#">Personagem 2</a>
+                                                      <a class="dropdown-item" href="#">Personagem 3</a>
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                            <div class="p-2">
+                                                <button type="submit" class="btn btn-primary">Tweet</button>
+                                            </div>
+                
+                                          </div>
+                                        
+                                          
+        
+                                            
+                                        
+                                    </div>
+                                    
+                                </div>
+        
+                            </form>
+                        </div>
+                    </div>
+        
+                    <div class="row tweet">
+                        <div class="col">
+                            <p><strong>Usuário 2</strong> <span class="text text-muted">- 21:17 04/09/24</span></p>
+                            <p>
+                                Tweet 1
+                            </p>
+        
+                            <br />
+                            
+                        </div>
+                    </div>
+        
+                    <div class="row tweet">
+                        <div class="col">
+                            <p><strong>Usuário 1</strong> <span class="text text-muted">- 21:03 04/09/24</span></p>
+                            <p>Tweet 2</p>
+        
+                            <br />
+                            <form>
+                                <div class="col d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-danger"><small>Remover</small></button>
+                                </div>
+                            </form>		
+                        </div>
+                    </div>
+
+                    <div class="row tweet">
+                        <div class="col">
+                            <p><strong>Usuário 3</strong> <span class="text text-muted">- 20:00 04/09/24</span></p>
+                            <p>Tweet 3</p>
+        
+                            <br />
+                            	
+                        </div>
+                    </div>
+        
+        
+                </div>
+        
+                <div class="col-md-3">
+                    <div >
+                        <div class="quemSeguir">
+                            <span class="quemSeguirTitulo">Quem seguir</span><br />
+                            <hr />
+                            <a href="#" class="quemSeguirTxt">Procurar por pessoas conhecidas</a>
+                        </div>
+    
+                    </div>
+
+                    <div >
+                        <div class="quemSeguir">
+                            <span class="quemSeguirTitulo">Avatares</span><br />
+                            <hr />
+                            <a href="#" class="quemSeguirTxt">Crie seus avatares de IA aqui</a>
+                        </div>
+    
+                    </div>
+                </div>
+                
+                
+
+                
+
+                
+        
+            </div>
+        </div>
+          
+	</body>
+
+</html>
