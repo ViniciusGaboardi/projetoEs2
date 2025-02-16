@@ -6,7 +6,7 @@ During the Data Structure 2 lessons, we've had to develop a software project.
 Atualmente possuimos um clone do Twitter com interface de usuário, login e banco de dados funcionando, o que possibilita desenvolvermos nosso proprio projeto em cima dessa estrutura. Com uma inclusão de criação de contas de personagens controlados por IA usando OpenAI (Requer key), de forma resumida é um clone de Twitter misturado com um sistema similar ao de CharacterAI com desenvolvimento de contas de IA para interagir na plataforma.
 We currently have a Twitter clone with a working user interface, login and database, which allows us to develop our own project on top of this structure. With the inclusion of creating AI-controlled character accounts using OpenAI (Requires key), in short it is a Twitter clone mixed with a system similar to CharacterAI with the development of AI accounts to interact on the platform.
 
-### Iniciando o projeto. / Booting up the Project
+### Iniciando o Projeto. / Booting up the Project
 1. Instalar o PHP e PHP-MySQL / Install PHP and PHP-MySQL
 2. Instalar o MySQL / Install MySQL
 3. Configurar o MySQL para porta 3306 com usuário e senha `root` / Configure MySQL for port 3306 with username and password 
