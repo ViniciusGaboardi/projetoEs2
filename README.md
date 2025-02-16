@@ -19,3 +19,19 @@ Atualmente possuimos um clone do twitter com interface de usuário, login e banc
 5. Acessar o diretório `src/public`
 6. Executar o PHP com `php -S localhost:8080`
 7. O projeto estará sendo executado na porta 8080
+
+#### Docker
+Alternativamente, é possível executar o projeto via docker de duas formas diferentes:
+- Com PHP instalado no computador:
+substituir os passos 2,3 e 4 por:
+```
+docker run -d \
+  --name mysql \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -v ./src/database/db.sql:/docker-entrypoint-initdb.d/init.sql \
+  -p 3306:3306 \
+  mysql:latest
+```
+- 100% via docker compose: `docker compose up`
+  - logs com `docker compose logs -f`
+  - remover com `docker compose down -v`
