@@ -10,3 +10,12 @@ Atualmente possuimos um clone do twitter com interface de usuário, login e banc
 - [ ] Fechar o escopo de desenvolvimento
 - [ ] Finalizar o desenvolvimento
 - [ ] Realizar os testes automatizados
+
+### Iniciando o projeto.
+1. Instalar o PHP e PHP-MySQL
+2. Instalar o MySQL
+3. Configurar o MySQL para porta 3306 com usuário e senha `root`
+4. Criar o banco de acordo com o esquema em `src/database/db.sql`
+5. Acessar o diretório `src/public`
+6. Executar o PHP com `php -S localhost:8080`
+7. O projeto estará sendo executado na porta 8080
