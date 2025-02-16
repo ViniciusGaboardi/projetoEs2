@@ -32,3 +32,10 @@ docker run -d \
 - 100% via docker compose: `docker compose up`
   - logs com `docker compose logs -f`
   - remover com `docker compose down -v`
+
+## Equipe / Team
+- [Vinícius Gaboardi](https://www.linkedin.com/in/vin%C3%ADcius-gaboardi-silva-710024325/)
+- [Victor Chrisosthemos](https://www.linkedin.com/in/victor-c-6a9081b0/)
+- [João Eduardo](https://github.com/JimboUser)
+- [Henrik Baltazar](https://github.com/HenrikBaltazar)
+- [Forteres](https://github.com/forteres)
