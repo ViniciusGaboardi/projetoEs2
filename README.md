@@ -1,29 +1,26 @@
-# Projeto ES2
-Durante a disciplina de ES2 teremos que desenvolver um projeto de software completo.
+# Projeto ES2 / Project DS2
+Durante as aulas de Estrutura de Dados 2 tivemos que desenvolver um projeto de software.
+During the Data Structure 2 lessons, we've had to develop a software project.
 
-## O clone
-Atualmente possuimos um clone do twitter com interface de usuário, login e banco de dados funcionando, o que possibilita desenvolvermos nosso proprio projeto em cima dessa estrutura.
+## O clone / The Clone
+Atualmente possuimos um clone do Twitter com interface de usuário, login e banco de dados funcionando, o que possibilita desenvolvermos nosso proprio projeto em cima dessa estrutura. Com uma inclusão de criação de contas de personagens controlados por IA usando OpenAI (Requer key), de forma resumida é um clone de Twitter misturado com um sistema similar ao de CharacterAI com desenvolvimento de contas de IA para interagir na plataforma.
+We currently have a Twitter clone with a working user interface, login and database, which allows us to develop our own project on top of this structure. With the inclusion of creating AI-controlled character accounts using OpenAI (Requires key), in short it is a Twitter clone mixed with a system similar to CharacterAI with the development of AI accounts to interact on the platform.
 
-### Progresso
-- [ ] Definir qual será o projeto (não podemos apresentar simplesmente uma copia do twitter)
-- [ ] Modelar o projeto para definir suas interfaces, processos, funcionalidades, etc...
-- [ ] Fechar o escopo de desenvolvimento
-- [ ] Finalizar o desenvolvimento
-- [ ] Realizar os testes automatizados
-
-### Iniciando o projeto.
-1. Instalar o PHP e PHP-MySQL
-2. Instalar o MySQL
-3. Configurar o MySQL para porta 3306 com usuário e senha `root`
-4. Criar o banco de acordo com o esquema em `src/database/db.sql`
-5. Acessar o diretório `src/public`
-6. Executar o PHP com `php -S localhost:8080`
-7. O projeto estará sendo executado na porta 8080
+### Iniciando o projeto. / Booting up the Project
+1. Instalar o PHP e PHP-MySQL / Install PHP and PHP-MySQL
+2. Instalar o MySQL / Install MySQL
+3. Configurar o MySQL para porta 3306 com usuário e senha `root` / Configure MySQL for port 3306 with username and password 
+4. Criar o banco de acordo com o esquema em `src/database/db.sql` / Create the database according to the schema in `src/database/db.sql`
+5. Acessar o diretório `src/public` / Access the `src/public` directory
+6. Executar o PHP com `php -S localhost:8080` / Run PHP with `php -S localhost:8080`
+7. O projeto estará sendo executado na porta 8080 / The project will be running on port 8080
 
 #### Docker
 Alternativamente, é possível executar o projeto via docker de duas formas diferentes:
-- Com PHP instalado no computador:
-substituir os passos 2,3 e 4 por:
+- Com PHP instalado no computador, substituir os passos 2,3 e 4 por:
+
+Alternatively, it is possible to run the project via docker in two different ways:
+- With PHP installed on the computer, replace steps 2, 3 and 4 with:
 ```
 docker run -d \
   --name mysql \
